@@ -1,14 +1,25 @@
-const randomNumber = Math.ceil(Math.random() * 100);
+const randomNumber = Math.ceil(Math.random() * 100) ;
 
 const findNumber = (number) => {
-    let diapazon = +prompt(`Введите число от 0 до 100`);
-    if (diapazon < number) {
-        alert(`Вы ввели ${diapazon} и это слишком маленькое число`);
-        return findNumber(number);
-    } else if (diapazon > number) {
-        alert(`Вы ввели ${diapazon} и это слишком большое число `);
-        return findNumber(number);
-    } else if (diapazon === number)  return alert(`Вы угадали !`);
+    let start = 0,
+        end = 100;
+
+    for (let i = start; i < end; i++) {
+        let diapazon = +prompt(`Введите среднее между ${start} и ${end}`);
+
+        if (diapazon > start && diapazon < end) {
+            if (diapazon == number) {
+                alert(`Вы угадали, оно равно  ${number} !`);
+                break;
+            } else if (number > diapazon) {
+                end = diapazon;
+                alert(`Вы ввели ${diapazon} и это слишком большое число`);
+            } else if (number < diapazon) {
+                start = diapazon;
+                alert(`Вы ввели ${diapazon} и это слишком маленькое число `);
+            }
+        }
+    }
 };
 
 findNumber(randomNumber);
